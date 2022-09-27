@@ -1,0 +1,61 @@
+---
+title: "Best Ball Report"
+
+execute: 
+  echo: false
+---
+
+# BEST BALL Summary/ Player Stats Website
+
+## Our Warriors
+
+```{r}
+#| warning: false
+#| echo: false
+#| results: hide
+
+
+library(tidyverse)
+library(nflverse)
+
+load_player_stats(seasons = 2022)
+
+player_pic <- load_player_stats(seasons = 2022) %>%
+  select(c(3,6)) %>% 
+  filter(player_display_name %in% c("Kyler Murray"
+         ,"Kirk Cousins"
+         ,"Marcus Mariota"
+         ,"Tyreek Hill"
+         ,"Mike Evans"
+         ,"Mike Williams"
+         ,"Christian Kirk"
+         ,"Tyler Boyd"
+         ,"Treylon Burks"
+         ,"Austin Ekeler"
+         ,"Kenneth Gainwell"
+         ,"Cordarrelle Patterson"
+         ,"Breece Hall"
+         ,"Nyheim Hines"
+         ,"J.K. Dobbins"
+         ,"David Njoku"
+         ,"Irv Smith Jr.")) %>% 
+  distinct()
+```
+
+![](https://static.www.nfl.com/image/private/f_auto,q_auto/league/lsszbdnkusxc7mduw5be){fig-align="center" width="100"}
+
+![](https://static.www.nfl.com/image/private/f_auto,q_auto/league/oiacjddbxvaeiewm9v62){fig-align="center" width="100"}
+
+figure out a way to display images better
+
+```{r}
+#| column: screen-inset-shaded
+#| layout-nrow: 3
+
+library(jpeg)
+library(imager)
+
+library(magick) #fun package lol
+kirk <- image_read("https://static.www.nfl.com/image/private/f_auto,q_auto/league/nkb9x92lbea6ayknzoba.png")
+print(kirk)
+```

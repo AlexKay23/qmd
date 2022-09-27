@@ -1,0 +1,23 @@
+project:
+  type: website
+
+website:
+  title: "Best Ball Report"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - about.qmd
+      - QBpage.qmd
+
+  
+format:
+  html:
+    theme: superhero
+    css: styles.css
+    toc: true
+
+editor: visual
+
+
+
