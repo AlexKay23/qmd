@@ -51,6 +51,8 @@ figure out a way to display images better
 ```{r}
 #| column: screen-inset-shaded
 #| layout-nrow: 3
+#| echo: false
+#| warning: false
 
 library(jpeg)
 library(imager)
