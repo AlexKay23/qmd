@@ -53,5 +53,5 @@ library(imager)
 
 library(magick) #fun package lol
 kirk <- image_read("https://static.www.nfl.com/image/private/f_auto,q_auto/league/nkb9x92lbea6ayknzoba.png")
-magick::image_background(kirk, color = "red")
+magick::image_background(kirk, color = "blue")
 ```
