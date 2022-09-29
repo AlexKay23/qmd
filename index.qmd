@@ -7,7 +7,7 @@ execute:
 
 # BEST BALL Summary/ Player Stats Website
 
-## Our Warriors
+## 
 
 ```{r}
 #| warning: false
