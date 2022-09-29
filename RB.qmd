@@ -1,0 +1,21 @@
+---
+title: "RB Page"
+editor: visual
+---
+
+# Running Back Page
+
+## RB rush attempt Leaders
+
+```{r}
+#| warning: false
+#| results: hide
+#| echo: false
+
+
+library(tidyverse)
+library(nflverse)
+
+
+rush_stats <- load_nextgen_stats(seasons = 2022, stat_type = 'rushing') #this has player GIS to make images with player images
+```
