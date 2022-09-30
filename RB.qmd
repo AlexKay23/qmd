@@ -12,7 +12,7 @@ editor: visual
 #| results: hide
 #| echo: false
 
-
+library(quarto)
 library(tidyverse)
 library(nflverse)
 
