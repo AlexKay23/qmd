@@ -19,5 +19,12 @@
     "title": "QB page",
     "section": "",
     "text": "QBs with most Pass Attempts.\n\n\n\n\n\n\n\n\n\n\n\n\nbad pass leaders"
+  },
+  {
+    "objectID": "RB.html",
+    "href": "RB.html",
+    "title": "RB Page",
+    "section": "",
+    "text": "Top 10 RB Rush Yards.\n\n\n\n\n\n\n\n\nsnaps <-load_snap_counts(seasons = 2022)\n\nrb_snaps <- snaps %>% \n  filter(position == \"RB\")"
   }
 ]

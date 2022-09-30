@@ -18,4 +18,42 @@ library(nflverse)
 
 
 rush_stats <- load_nextgen_stats(seasons = 2022, stat_type = 'rushing') #this has player GIS to make images with player images
+
+t10_rushers <- rush_stats %>% 
+  arrange(desc(rush_yards)) %>% 
+  head(10)
+```
+
+```{r}
+#| label: Rush Attempts
+#| fig-cap: Top 10 RB Rush Yards.
+#| warning: false
+#| echo: false
+
+ggplot(t10_rushers, aes(x = reorder(player_gsis_id, -rush_yards), y= rush_yards))+
+  geom_col(aes(color = team_abbr, fill = team_abbr))+
+  scale_color_nfl(type = "secondary")+
+  scale_fill_nfl(alpha = 0.4)+
+  labs(title = "2022 Rushing Leaders",
+       y= "Number of Rush Yards")+
+  theme_minimal()+
+  theme(plot.title = ggplot2::element_text(face = "bold"),
+        plot.title.position = "plot",
+    axis.title.x = element_blank(),
+    axis.text.x = element_nfl_headshot(size = 2)
+  )
+```
+
+## Shared Backfields
+
+```{r}
+
+
+
+
+snaps <-load_snap_counts(seasons = 2022)
+
+rb_snaps <- snaps %>% 
+  filter(position == "RB")
+  
 ```
