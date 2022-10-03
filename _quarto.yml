@@ -11,7 +11,8 @@ website:
       - QBpage.qmd
       - RB.qmd
     search: true
-      
+    
+
 
   
 format:
