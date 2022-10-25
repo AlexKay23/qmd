@@ -10,9 +10,9 @@ website:
       - about.qmd
       - QBpage.qmd
       - RB.qmd
+      - Offense_Report.qmd
+      - Defense_Report.qmd
     search: true
-    
-
 
   
 format:

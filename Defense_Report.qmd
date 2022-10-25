@@ -1,0 +1,58 @@
+---
+title: "Defense Report"
+editor: visual
+---
+
+```{r}
+#| warning: false
+#| results: hide
+#| echo: false
+
+library(quarto)
+library(tidyverse)
+library(nflverse)
+library(ggtext)
+library(ggrepel)
+library(gsisdecoder)
+library(glue)
+
+
+pbp <- load_pbp()
+
+
+def_tds2 <- pbp %>% 
+  group_by(defteam) %>% 
+  filter(grepl("TOUCHDOWN",desc)) %>% 
+  filter(!grepl("INTERCEPTED|FUMBLE|NULLIFIED|REVERSED",desc))
+
+cp <- coord_polar(theta = "y")
+cp$is_free <- function() TRUE
+```
+
+```{r}
+#| label: Defense Concedeing TDs by Play Type
+#| fig-cap: Play Types of how Defenses are being scored on.
+#| warning: false
+#| echo: false
+
+ggplot(def_tds2, aes(x= "",y= play_type))+
+  geom_bar(width = 1, stat = "identity", aes(fill = play_type, color = play_type))+
+  scale_fill_manual(values = c("#101820","#D50A0A","#D3BC8D", "#A5ACAF", "#013369"), name = "Play Type",
+                    labels = c("Field Goal", "Kickoff", "Pass","Punt", "Run"))+
+  scale_color_manual(values = c("#101820","#D50A0A","#D3BC8D", "#A5ACAF", "#013369"), name = "Play Type",
+                     labels = c("Field Goal", "Kickoff", "Pass","Punt", "Run"))+
+  theme_void()+
+  theme(
+    plot.title.position = "plot",
+    plot.title = ggplot2::element_text(face = "bold"),
+    axis.title = element_blank(),
+    # make wordmarks of team abbreviations
+    strip.text = element_nfl_logo(size = 1),
+    # load image from url in caption
+    plot.caption = element_path(hjust = 1, size = 0.4)
+  )+
+  ggtitle("How Defences are Giving up Touchdowns")+
+  cp+
+  facet_wrap(~ defteam, nrow = 4, scales = "free")
+
+```

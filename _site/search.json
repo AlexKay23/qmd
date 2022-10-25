@@ -25,6 +25,20 @@
     "href": "RB.html",
     "title": "RB Page",
     "section": "",
-    "text": "Top 10 RB Rush Yards.\n\n\n\n\n\n\n\n\nsnaps <-load_snap_counts(seasons = 2022)\n\nrb_snaps <- snaps %>% \n  filter(position == \"RB\")"
+    "text": "Top 10 RB Rush Yards."
+  },
+  {
+    "objectID": "Offense_Report.html",
+    "href": "Offense_Report.html",
+    "title": "Offense Report",
+    "section": "",
+    "text": "Pass and Rush Ratios."
+  },
+  {
+    "objectID": "Defense_Report.html",
+    "href": "Defense_Report.html",
+    "title": "Defense Report",
+    "section": "",
+    "text": "Play Types of how Defenses are being scored on."
   }
 ]

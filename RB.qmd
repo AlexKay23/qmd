@@ -47,7 +47,8 @@ ggplot(t10_rushers, aes(x = reorder(player_gsis_id, -rush_yards), y= rush_yards)
 ## Shared Backfields
 
 ```{r}
-
+#| warning: false
+#| echo: false
 
 
 

@@ -1,0 +1,49 @@
+---
+title: "Offense Report"
+editor: visual
+---
+
+```{r}
+#| warning: false
+#| results: hide
+#| echo: false
+
+library(quarto)
+library(tidyverse)
+library(nflverse)
+library(ggtext)
+library(ggrepel)
+library(gsisdecoder)
+library(glue)
+
+off_pbp <- load_pbp() %>%
+  filter(grepl("pass|run",play_type))
+
+cp <- coord_polar(theta = "y")
+cp$is_free <- function() TRUE
+```
+
+```{r}
+#| label: Teams Pass and Rush Ratio
+#| fig-cap: Pass and Rush Ratios.
+#| warning: false
+#| echo: false
+
+ggplot(off_pbp, aes(x= "",y= play_type))+
+  geom_bar(width = 1, stat = "identity", aes(fill = play_type, color = play_type))+
+  scale_fill_manual(values = c("#D3BC8D", "#013369"), name = "Play Type", labels = c("Pass", "Run"))+
+  scale_color_manual(values = c( "#D3BC8D", "#013369"), name = "Play Type", labels = c("Pass", "Run"))+
+  theme_void()+
+  theme(
+    plot.title.position = "plot",
+    plot.title = ggplot2::element_text(face = "bold"),
+    axis.title = element_blank(),
+    # make wordmarks of team abbreviations
+    strip.text = element_nfl_logo(size = 1),
+    # load image from url in caption
+    plot.caption = element_path(hjust = 1, size = 0.4)
+  )+
+  ggtitle("Offense Pass/Rush Splits")+
+  cp+
+  facet_wrap(~ posteam, nrow = 4, scales = "free")
+```
