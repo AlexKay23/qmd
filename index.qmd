@@ -44,7 +44,7 @@ player_pic <- load_player_stats(seasons = 2022) %>%
 
 ```{r}
 #| column: screen-inset-shaded
-#| layout-nrow: 3
+#| layout-nrow: 1
 #| echo: false
 #| warning: false
 
@@ -52,6 +52,6 @@ library(jpeg)
 library(imager)
 
 library(magick) #fun package lol
-kirk <- image_read("https://static.www.nfl.com/image/private/f_auto,q_auto/league/nkb9x92lbea6ayknzoba.png")
+kirk <- image_read("C:/Users/ak23a/Downloads/IMG_5306.JPG")
 magick::image_background(kirk, color = "blue")
 ```

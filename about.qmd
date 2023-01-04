@@ -2,7 +2,9 @@
 title: "About"
 ---
 
-About this site
+About this site:
+
+Here to win!
 
 ```{r}
 1 + 1
