@@ -68,7 +68,7 @@ ggplot(next_gen, aes(x = avg_rush_yards , y= rush_yards_over_expected_per_att))+
                   seed = 123,
                   max.time = 1,
                   max.iter = Inf,
-                  size = 4.25,
+                  size = 3.25,
                   point.padding = 0.2, 
                   nudge_x = .05,
                   nudge_y = .05,
