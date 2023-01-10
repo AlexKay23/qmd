@@ -66,9 +66,9 @@ ggplot(next_gen, aes(x = avg_rush_yards , y= rush_yards_over_expected_per_att))+
   scale_fill_nfl(alpha = 0.4)+
   geom_text_repel(aes(label = player_display_name),verbose = TRUE,
                   seed = 123,
-                  max.time = 1,
+                  max.time = 6,
                   max.iter = Inf,
-                  size = 3.25,
+                  size = 3,
                   point.padding = 0.2, 
                   nudge_x = .05,
                   nudge_y = .05,
