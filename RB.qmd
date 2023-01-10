@@ -44,17 +44,39 @@ ggplot(t10_rushers, aes(x = reorder(player_gsis_id, -rush_yards), y= rush_yards)
   )
 ```
 
-## Shared Backfields
+## Average Rushes Over Expected
 
 ```{r}
 #| warning: false
 #| echo: false
 
+library(ggtext)
+library(ggrepel)
 
+id <- load_ff_playerids() %>% select(c(4,21)) %>% 
+  rename(player_display_name = name)
 
-snaps <-load_snap_counts(seasons = 2022)
+next_gen <- load_nextgen_stats(season =2022, stat_type = c("rushing")) %>% 
+  filter(week == 0)
 
-rb_snaps <- snaps %>% 
-  filter(position == "RB")
+ggplot(next_gen, aes(x = avg_rush_yards , y= rush_yards_over_expected_per_att))+geom_point(aes(),size = 3)+ 
+  geom_smooth(method = "lm", se =F)+
+  geom_hline(yintercept = 0)+
+  scale_color_nfl(type = "secondary")+
+  scale_fill_nfl(alpha = 0.4)+
+  geom_text_repel(aes(label = player_display_name),verbose = TRUE,
+                  seed = 123,
+                  max.time = 1,
+                  max.iter = Inf,
+                  size = 4.25,
+                  point.padding = 0.2, 
+                  nudge_x = .05,
+                  nudge_y = .05,
+                  segment.linetype = 1)+
+  xlab("Average Rush Yard Per Attempt")+
+  ylab("Rush Yards Over Expected Per Attempt")+
+  labs(title = "2022 RB Rushing Yards by Expected Yards")+
+  theme_bw()
+
   
 ```
